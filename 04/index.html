@@ -1,1 +1,248 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김정우 사용설명서</title>
+<style>
+*{box-sizing:border-box}
+:root{
+  --blue:#4b8dff;
+  --deep:#2453c5;
+  --yellow:#ffd84f;
+  --mint:#93e7cf;
+  --pink:#ffc6d9;
+  --orange:#ffbe7a;
+  --ink:#24314f;
+}
+body{
+  margin:0;
+  font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(135deg,#eaf6ff,#fff9df);
+  padding:28px 14px;
+}
+.page{
+  width:min(1180px,100%);
+  margin:auto;
+  background:#fff;
+  border:5px solid #87baff;
+  border-radius:32px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(45,84,150,.2);
+}
+.browser{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:14px 18px;
+  background:#dff0ff;
+  border-bottom:3px solid #b9d8ff;
+}
+.dot{
+  width:16px;height:16px;border-radius:50%;
+}
+.dot:nth-child(1){background:#ff6c6c}
+.dot:nth-child(2){background:#ffd553}
+.dot:nth-child(3){background:#6edb8b}
+.address{
+  margin-left:8px;
+  flex:1;
+  background:#fff;
+  padding:8px 14px;
+  border-radius:999px;
+  color:#7583a0;
+  font-size:13px;
+}
+.layout{
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  min-height:720px;
+}
+.visual{
+  position:relative;
+  background:#dfeeff;
+}
+.visual img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+}
+.visual-badge{
+  position:absolute;
+  left:20px;
+  bottom:20px;
+  background:rgba(255,255,255,.9);
+  border-radius:18px;
+  padding:12px 16px;
+  font-weight:900;
+  box-shadow:0 8px 18px rgba(0,0,0,.12);
+}
+.content{
+  padding:34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.kicker{
+  font-size:18px;
+  font-weight:900;
+  color:#4b8dff;
+}
+h1{
+  margin:4px 0 6px;
+  font-size:clamp(38px,5vw,58px);
+  color:#244fb6;
+  letter-spacing:-2px;
+}
+.subtitle{
+  margin-bottom:22px;
+  font-size:21px;
+  font-weight:900;
+}
+.card{
+  border-radius:22px;
+  padding:18px 20px;
+  margin:8px 0;
+}
+.blue{background:#dff0ff}
+.green{background:#ddf8ec}
+.yellow{background:#fff1b9}
+.pink{background:#ffe0ea}
+.card h2{
+  margin:0 0 10px;
+  font-size:22px;
+}
+.row{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.tag{
+  background:#fff;
+  border-radius:14px;
+  padding:10px 13px;
+  font-weight:900;
+  box-shadow:0 5px 12px rgba(0,0,0,.06);
+}
+.card p{
+  margin:0;
+  line-height:1.6;
+  font-size:17px;
+  font-weight:800;
+}
+button{
+  margin-top:18px;
+  border:none;
+  border-radius:18px;
+  padding:16px 22px;
+  font-size:19px;
+  font-weight:900;
+  background:linear-gradient(135deg,#4b9dff,#3855d8);
+  color:#fff;
+  cursor:pointer;
+  box-shadow:0 10px 22px rgba(56,85,216,.25);
+  transition:.2s;
+}
+button:hover{
+  transform:translateY(-2px) scale(1.01);
+}
+#result{
+  display:none;
+  margin-top:14px;
+  padding:14px 16px;
+  background:#f5f9ff;
+  border:3px dashed #9fc7ff;
+  border-radius:18px;
+  font-size:17px;
+  font-weight:900;
+  text-align:center;
+}
+.footer{
+  text-align:center;
+  padding:16px;
+  background:#f5f8ff;
+  color:#78849f;
+  font-weight:800;
+  font-size:13px;
+}
+@media(max-width:850px){
+  .layout{grid-template-columns:1fr}
+  .visual{max-height:620px}
+  .content{padding:26px 20px}
+}
+</style>
+</head>
+<body>
 
+<div class="page">
+  <div class="browser">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <div class="address">kim-jeongwoo-user-manual.html</div>
+  </div>
+
+  <main class="layout">
+    <section class="visual">
+      <img src="kim_jeongwoo_illustration.png" alt="안경 쓴 김정우 캐릭터 일러스트">
+      <div class="visual-badge">👍 오늘도 정우답게!</div>
+    </section>
+
+    <section class="content">
+      <div class="kicker">👍 나를 표현하는 이모지</div>
+      <h1>김정우 사용설명서</h1>
+      <div class="subtitle">정우를 잘 사용하는 방법 😎</div>
+
+      <div class="card blue">
+        <h2>❤️ 내가 좋아하는 것</h2>
+        <div class="row">
+          <span class="tag">🎮 게임</span>
+          <span class="tag">▶️ 유튜브</span>
+          <span class="tag">🎬 영상 만들기</span>
+        </div>
+      </div>
+
+      <div class="card green">
+        <h2>⭐ 내가 잘하는 것</h2>
+        <p>🛋️ 쉬기<br>잘 쉬고 다시 에너지 충전하는 게 특기!</p>
+      </div>
+
+      <div class="card yellow">
+        <h2>🔋 기분이 안 좋을 때</h2>
+        <p>🍗 맛있는 치킨을 먹으면 다시 충전돼요.<br>치킨 = 정우의 행복 배터리!</p>
+      </div>
+
+      <div class="card pink">
+        <h2>⚠️ 나를 대할 때 주의할 점</h2>
+        <p>🙅 날 무시하면 안돼!<br>내 말도 잘 들어주고 존중해 주세요.</p>
+      </div>
+
+      <button onclick="showToday()">오늘의 정우 알아보기 🚀</button>
+      <div id="result"></div>
+    </section>
+  </main>
+
+  <div class="footer">🎮 KIM JEONGWOO USER MANUAL · 게임도 일상도 즐겁게!</div>
+</div>
+
+<script>
+const messages=[
+  "오늘의 정우는 게임 모드 ON 🎮",
+  "영상 만들기 아이디어가 떠오를 것 같은 날 🎬",
+  "유튜브 보면서 푹 쉬고 싶은 날 ▶️",
+  "맛있는 치킨이면 기분 충전 완료 🍗",
+  "오늘은 그냥 쉬는 게 최고 🛋️",
+  "정우에게는 관심과 존중이 제일 중요해요 👍"
+];
+
+function showToday(){
+  const box=document.getElementById("result");
+  box.textContent=messages[Math.floor(Math.random()*messages.length)];
+  box.style.display="block";
+}
+</script>
+
+</body>
+</html>
