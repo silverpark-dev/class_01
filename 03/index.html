@@ -1,384 +1,407 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>김효정 사용설명서</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-  <title>김효정 사용설명서</title>
+  body {
+    font-family: "Pretendard", "Noto Sans KR", Arial, sans-serif;
+    background:
+      radial-gradient(circle at 10% 10%, #ffe5f2 0, transparent 25%),
+      radial-gradient(circle at 90% 20%, #e8ddff 0, transparent 25%),
+      linear-gradient(135deg, #fff8fb, #f7f2ff);
+    color: #40364a;
+    min-height: 100vh;
+  }
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  .wrap {
+    width: min(1100px, 92%);
+    margin: 0 auto;
+  }
 
-    body {
-      font-family: "Pretendard", "Noto Sans KR", sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, #ffe3f2 0, transparent 25%),
-        radial-gradient(circle at 90% 20%, #e6dcff 0, transparent 25%),
-        linear-gradient(135deg, #fff7fb, #f7f3ff);
-      min-height: 100vh;
-      color: #3d3347;
-      padding: 40px 20px;
-    }
+  header {
+    padding: 26px 0 10px;
+  }
 
-    .container {
-      width: min(900px, 100%);
-      margin: auto;
-    }
+  .nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
 
-    .hero {
-      background: rgba(255,255,255,0.85);
-      border: 2px solid rgba(255,255,255,0.8);
-      border-radius: 32px;
-      padding: 50px 30px;
-      text-align: center;
-      box-shadow: 0 15px 50px rgba(130, 92, 150, 0.12);
-      margin-bottom: 25px;
-      position: relative;
-      overflow: hidden;
-    }
+  .logo {
+    font-size: 25px;
+    font-weight: 800;
+    color: #c85d91;
+  }
 
-    .hero::before {
-      content: "✦";
-      position: absolute;
-      top: 20px;
-      left: 30px;
-      font-size: 30px;
-      color: #c9a8ff;
-    }
+  .logo span { color: #7b63b6; }
 
-    .hero::after {
-      content: "♡";
-      position: absolute;
-      right: 30px;
-      bottom: 20px;
-      font-size: 35px;
-      color: #ff9ac4;
-    }
+  .badge {
+    background: rgba(255,255,255,.78);
+    border: 1px solid #eadff4;
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-size: 13px;
+    color: #8b7895;
+  }
 
-    .emoji {
-      font-size: 70px;
-      margin-bottom: 10px;
-    }
+  .hero {
+    margin-top: 18px;
+    background: rgba(255,255,255,.82);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 20px 60px rgba(106,80,130,.12);
+    border-radius: 34px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    min-height: 470px;
+  }
 
-    .hero h1 {
-      font-size: clamp(34px, 7vw, 58px);
-      margin-bottom: 12px;
-      color: #40324c;
-      letter-spacing: -2px;
-    }
+  .hero-text {
+    padding: 58px 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    .hero h1 span {
-      color: #d565a0;
-    }
+  .eyebrow {
+    display: inline-block;
+    width: fit-content;
+    background: #f2e9ff;
+    color: #8762b0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 18px;
+  }
 
-    .subtitle {
-      color: #8b7995;
-      font-size: 17px;
-    }
+  h1 {
+    font-size: clamp(44px, 6vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -3px;
+  }
 
-    .tag {
-      display: inline-block;
-      margin-top: 18px;
-      background: #f1e8ff;
-      color: #8c63b7;
-      padding: 8px 16px;
-      border-radius: 30px;
-      font-size: 14px;
-      font-weight: 700;
-    }
+  h1 .pink { color: #cf5f91; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
+  .intro {
+    margin-top: 20px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #756a7b;
+  }
 
-    .card {
-      background: rgba(255,255,255,0.92);
-      padding: 28px;
-      border-radius: 26px;
-      box-shadow: 0 8px 30px rgba(116, 89, 135, 0.09);
-      transition: 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
+  .mini-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 24px;
+  }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(116, 89, 135, 0.15);
-    }
+  .mini-tags span {
+    padding: 8px 13px;
+    background: #fff;
+    border: 1px solid #eee3f5;
+    border-radius: 999px;
+    font-size: 13px;
+  }
 
-    .card-icon {
-      width: 54px;
-      height: 54px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 18px;
-      font-size: 28px;
-      margin-bottom: 17px;
-    }
+  .hero-img {
+    position: relative;
+    background: linear-gradient(160deg, #fce8f3, #ebe2ff);
+    overflow: hidden;
+  }
 
-    .pink .card-icon {
-      background: #ffe5f0;
-    }
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    display: block;
+    mix-blend-mode: multiply;
+  }
 
-    .purple .card-icon {
-      background: #eee5ff;
-    }
+  .hero-img::after {
+    content: "♡";
+    position: absolute;
+    right: 28px;
+    top: 20px;
+    font-size: 44px;
+    color: #ffffffcc;
+  }
 
-    .blue .card-icon {
-      background: #e3f2ff;
-    }
+  .section-title {
+    text-align: center;
+    margin: 54px 0 24px;
+  }
 
-    .yellow .card-icon {
-      background: #fff2cf;
-    }
+  .section-title h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+  }
 
-    .card h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
+  .section-title p {
+    color: #91849b;
+    font-size: 14px;
+  }
 
-    .card p {
-      color: #706778;
-      line-height: 1.75;
-      font-size: 16px;
-    }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
 
-    .highlight {
-      color: #c14f8b;
-      font-weight: 700;
-    }
+  .card {
+    background: rgba(255,255,255,.90);
+    border: 1px solid #f0e8f4;
+    border-radius: 26px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(110,86,127,.08);
+    transition: .2s ease;
+  }
 
-    .warning {
-      grid-column: 1 / -1;
-      background: linear-gradient(135deg, #fff4f8, #f6efff);
-      border: 2px dashed #daa9cf;
-    }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px rgba(110,86,127,.13);
+  }
 
-    .warning-box {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
 
-    .warning-emoji {
-      font-size: 50px;
-    }
+  .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+    font-size: 25px;
+  }
 
-    .profile {
-      margin-top: 20px;
-      background: rgba(255,255,255,0.92);
-      border-radius: 26px;
-      padding: 30px;
-      text-align: center;
-      box-shadow: 0 8px 30px rgba(116,89,135,.09);
-    }
+  .pinkbg { background: #ffe5f1; }
+  .purplebg { background: #efe7ff; }
+  .bluebg { background: #e5f3ff; }
+  .yellowbg { background: #fff2d3; }
 
-    .profile-title {
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #b58ac1;
-      margin-bottom: 12px;
-      font-weight: bold;
-    }
+  .card h3 {
+    font-size: 21px;
+  }
 
-    .profile h2 {
-      font-size: 26px;
-      margin-bottom: 18px;
-    }
+  .card p {
+    color: #736a79;
+    line-height: 1.8;
+  }
 
-    .keywords {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
+  .highlight {
+    color: #c6568b;
+    font-weight: 800;
+  }
 
-    .keyword {
-      background: #f6efff;
-      color: #775b8c;
-      padding: 9px 16px;
-      border-radius: 30px;
-      font-size: 14px;
-    }
+  .wide {
+    grid-column: 1 / -1;
+  }
 
-    footer {
-      text-align: center;
-      color: #9d8ba4;
-      margin-top: 35px;
-      font-size: 13px;
-    }
+  .warning {
+    background: linear-gradient(135deg,#fff4f8,#f4efff);
+    border: 2px dashed #dcaed0;
+  }
 
-    @media(max-width: 650px) {
-      body {
-        padding: 25px 15px;
-      }
+  .keyword-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 10px;
+  }
 
-      .hero {
-        padding: 40px 20px;
-      }
+  .keyword {
+    background: #f6efff;
+    border: 1px solid #eadff7;
+    color: #765d88;
+    padding: 9px 13px;
+    border-radius: 999px;
+    font-size: 14px;
+  }
 
-      .grid {
-        grid-template-columns: 1fr;
-      }
+  .message {
+    margin: 20px 0 60px;
+    background: linear-gradient(135deg,#d98bb0,#a68ad6);
+    color: white;
+    border-radius: 28px;
+    padding: 34px;
+    text-align: center;
+  }
 
-      .warning {
-        grid-column: auto;
-      }
+  .message h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
 
-      .warning-box {
-        align-items: flex-start;
-      }
-    }
-  </style>
+  .message p {
+    line-height: 1.8;
+    opacity: .95;
+  }
+
+  footer {
+    text-align: center;
+    color: #9b8da2;
+    font-size: 13px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 760px) {
+    .nav { align-items: flex-start; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-text { padding: 42px 28px; }
+    .hero-img { height: 390px; }
+    .grid { grid-template-columns: 1fr; }
+    .wide { grid-column: auto; }
+  }
+</style>
 </head>
 
 <body>
+<header>
+  <div class="wrap nav">
+    <div class="logo">Hyojeong <span>Manual</span> ♡</div>
+    <div class="badge">중3 김효정 사용설명서</div>
+  </div>
+</header>
 
-<div class="container">
+<main class="wrap">
 
   <section class="hero">
+    <div class="hero-text">
+      <div class="eyebrow">✦ Teenager Edition</div>
+      <h1>김효정<br><span class="pink">사용설명서</span></h1>
+      <p class="intro">
+        조금만 알면 훨씬 더 친해질 수 있는<br>
+        중학교 3학년 효정이에 대한 작은 가이드예요.
+      </p>
 
-    <div class="emoji">🎧</div>
-
-    <h1>
-      김효정 <span>사용설명서</span>
-    </h1>
-
-    <p class="subtitle">
-      중학교 3학년 김효정을 이해하기 위한 작은 가이드
-    </p>
-
-    <div class="tag">
-      ✦ Teenager Edition ✦
+      <div class="mini-tags">
+        <span>🎬 영상</span>
+        <span>🎙 방송</span>
+        <span>🎧 음악</span>
+        <span>💗 친구</span>
+        <span>✨ 새로운 경험</span>
+      </div>
     </div>
 
+    <div class="hero-img">
+      <img src="hyojeong-character.png" alt="김효정 캐릭터 일러스트">
+    </div>
   </section>
 
+  <div class="section-title">
+    <h2>효정이를 소개합니다 💜</h2>
+    <p>좋아하는 것부터 충전 방법까지</p>
+  </div>
 
   <section class="grid">
 
-    <div class="card pink">
-
-      <div class="card-icon">💗</div>
-
-      <h2>내가 좋아하는 것</h2>
-
+    <article class="card">
+      <div class="card-head">
+        <div class="icon pinkbg">💗</div>
+        <h3>내가 좋아하는 것</h3>
+      </div>
       <p>
         친구들과 재미있게 놀기,<br>
         <span class="highlight">영상 만들기와 방송 활동</span>,<br>
-        내가 관심 있는 것을 마음껏 해보는 것을 좋아해요.
+        음악 듣기, 맛있는 디저트 먹기,
+        새로운 경험 해보는 것을 좋아해요.
       </p>
+    </article>
 
-    </div>
-
-
-    <div class="card purple">
-
-      <div class="card-icon">🎬</div>
-
-      <h2>내가 잘하는 것</h2>
-
-      <p>
-        영상이나 방송처럼<br>
-        여러 사람이 함께 만드는 일을 좋아해요.<br>
-        <span class="highlight">아이디어를 생각하고 표현하는 것</span>도 꽤 잘해요!
-      </p>
-
-    </div>
-
-
-    <div class="card blue">
-
-      <div class="card-icon">🔋</div>
-
-      <h2>충전이 필요할 때</h2>
-
-      <p>
-        혼자 조용히 쉬거나<br>
-        내가 좋아하는 영상을 보고,<br>
-        친구들과 이야기하면서 다시 충전돼요.
-      </p>
-
-    </div>
-
-
-    <div class="card yellow">
-
-      <div class="card-icon">✨</div>
-
-      <h2>나의 관심사</h2>
-
-      <p>
-        🎥 영상 · 방송<br>
-        🎧 음악과 콘텐츠<br>
-        💬 친구들과 수다<br>
-        🌟 새로운 경험
-      </p>
-
-    </div>
-
-
-    <div class="card warning">
-
-      <div class="warning-box">
-
-        <div class="warning-emoji">⚠️</div>
-
-        <div>
-          <h2>효정이를 대할 때 주의사항</h2>
-
-          <p>
-            기분이 좋지 않을 때 계속 캐묻기보다는
-            <span class="highlight">조금 기다려 주세요.</span><br>
-
-            갑자기 짜증이 날 때도 있지만,
-            시간이 조금 지나면 다시 괜찮아질 수 있어요. 😊
-          </p>
-
-        </div>
-
+    <article class="card">
+      <div class="card-head">
+        <div class="icon purplebg">🎬</div>
+        <h3>내가 잘하는 것</h3>
       </div>
+      <p>
+        영상이나 방송처럼 여러 사람이 함께 만드는 일을 좋아하고,
+        <span class="highlight">아이디어를 생각하고 표현하는 것</span>도 잘해요.
+        맡은 일은 은근 끝까지 해내는 스타일!
+      </p>
+    </article>
 
-    </div>
+    <article class="card">
+      <div class="card-head">
+        <div class="icon bluebg">🔋</div>
+        <h3>충전이 필요할 때</h3>
+      </div>
+      <p>
+        혼자 조용히 쉬거나 좋아하는 영상을 보고,
+        음악을 듣거나 친구들과 편하게 이야기하면
+        다시 에너지가 채워져요.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div class="icon yellowbg">✨</div>
+        <h3>나의 관심사</h3>
+      </div>
+      <div class="keyword-box">
+        <span class="keyword">🎥 영상 · 방송</span>
+        <span class="keyword">🎧 음악</span>
+        <span class="keyword">💬 친구</span>
+        <span class="keyword">📷 사진</span>
+        <span class="keyword">🍰 맛있는 것</span>
+        <span class="keyword">✈️ 새로운 경험</span>
+      </div>
+    </article>
+
+    <article class="card wide warning">
+      <div class="card-head">
+        <div class="icon pinkbg">⚠️</div>
+        <h3>효정이를 대할 때 주의사항</h3>
+      </div>
+      <p>
+        기분이 좋지 않을 때 계속 캐묻기보다는
+        <span class="highlight">조금 기다려 주세요.</span>
+        갑자기 짜증이 날 때도 있지만 혼자 생각할 시간이 조금 필요할 수 있어요.
+        이야기를 시작하면 일단 끝까지 들어주는 것이 중요합니다. 😊
+      </p>
+    </article>
+
+    <article class="card wide">
+      <div class="card-head">
+        <div class="icon purplebg">💡</div>
+        <h3>효정이 사용 TIP</h3>
+      </div>
+      <p>
+        ✔ 내 이야기를 먼저 잘 들어주세요.<br>
+        ✔ 같이 웃고 재미있는 일을 하면 빨리 친해져요.<br>
+        ✔ 하고 싶은 것을 스스로 선택할 시간을 주세요.<br>
+        ✔ 잘한 일은 구체적으로 칭찬해주면 효과 최고!<br>
+        ✔ 가끔은 혼자 있는 시간도 존중해주세요.
+      </p>
+    </article>
 
   </section>
 
-
-  <section class="profile">
-
-    <div class="profile-title">
-      HYOJEONG PROFILE
-    </div>
-
-    <h2>김효정은 이런 사람 🌷</h2>
-
-    <div class="keywords">
-
-      <div class="keyword">🎬 영상 좋아함</div>
-      <div class="keyword">🎙 방송부</div>
-      <div class="keyword">💜 친구 좋아함</div>
-      <div class="keyword">✨ 감성 충만</div>
-      <div class="keyword">🎧 콘텐츠 러버</div>
-      <div class="keyword">🌱 성장 중</div>
-
-    </div>
-
+  <section class="message">
+    <h2>한마디 🌷</h2>
+    <p>
+      아직 만들어지고 있는 중인 중3 김효정.<br>
+      좋아하는 것을 찾고, 경험하고, 실패하고, 다시 도전하면서<br>
+      조금씩 나만의 멋진 이야기를 만들어가는 중입니다. ♡
+    </p>
   </section>
 
+</main>
 
-  <footer>
-    김효정 사용설명서 · Made with 💗
-  </footer>
-
-</div>
+<footer>
+  김효정 사용설명서 · Made with ♡
+</footer>
 
 </body>
 </html>
